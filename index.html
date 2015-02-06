@@ -1,21 +1,24 @@
 ---
+title: Home
 ---
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Calligraphy Guidelines</title>
-  <link rel="stylesheet" href="css/app.css">
-</head>
-<body>
-  <p></p>
-  <p></p>
-  <p></p>
-  <p></p>
-  <p></p>
-  <p></p>
-  <p></p>
-  <p></p>
-  <p></p>
+  <head>
+    <meta charset="utf-8">
+    <title>Calligraphy Guidelines</title>
+  </head>
+  <body>
+    <ul>
+      {% for p in site.pages %}
+        {% if p.title %}
+          <li>
+            <a {% if p.url == page.url %}class="active"{% endif %} href="{{ site.baseurl }}{{ p.url }}">{{ p.title }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    <p>
+      Print settings: Letter, landscape, no margins
+    </p>
   </body>
 </html>
