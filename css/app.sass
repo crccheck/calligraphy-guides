@@ -1,0 +1,27 @@
+---
+---
+// constants
+// You'll need to play with these numbers manually
+$nib-width: 8.333px
+$page-gutter: 35px
+
+// configuration
+$x-height: 5  // nibs
+$X-height: 7  // height of a capital "X"
+$line-spacing: 2  // nibs
+
+body
+  font-size: $X-height * $nib-width
+  padding: 0 $page-gutter
+
+p
+  border-top: 1px solid black
+  border-bottom: 1px solid black
+  height: 1em
+  margin: $line-spacing * $nib-width 0
+
+p:before
+  border-top: 1px dashed black
+  content: " "
+  display: block
+  margin-top: 1em * (1 - $x-height / $X-height)
