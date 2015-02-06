@@ -1,13 +1,18 @@
+$page-gutter: 35px !default
+
 body
   font-size: $X-height * $nib-width
-  padding: 0 $page-gutter
+  padding: $page-gutter $page-gutter 0
 
 p
   border-top: 1px solid black
   border-bottom: 1px solid black
   height: 1em
   margin: $line-spacing * $nib-width 0
+  &:first-child
+    margin-top: 0
 
+// x-height line
 p:before
   border-top: 1px dashed black
   content: " "
