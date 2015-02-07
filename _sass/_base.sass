@@ -18,3 +18,24 @@ p:before
   content: " "
   display: block
   margin-top: 1em * (1 - $x-height / $X-height)
+
+// site structure
+
+.ui
+  background: rgba(200, 200, 200, 0.7)
+  border-radius: 0.5rem
+  font-size: 1rem
+  font-family: sans-serif
+  padding: 0.7rem
+  position: absolute
+  top: $page-gutter
+
+header.ui
+  left: $page-gutter
+
+nav.ui
+  right: $page-gutter
+
+@media only print
+  .no-print
+    display: none

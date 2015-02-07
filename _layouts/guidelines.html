@@ -6,6 +6,12 @@
   <link rel="stylesheet" href="{{ site.baseurl }}/css/{{ page.sass }}.css">
 </head>
 <body>
+  <header class="ui no-print">
+    {{ page.title }}, {{ page.description }}
+  </header>
+  <nav class="ui no-print">
+    <a href="{{ site.baseurl }}/">home</a>
+  </nav>
   {% for _ in (1..page.lines) %}
     <p></p>
   {% endfor %}

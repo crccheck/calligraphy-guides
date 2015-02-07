@@ -7,6 +7,10 @@
     <title>Calligraphy Guidelines</title>
   </head>
   <body>
+    <p>
+      Print these out to use as guidelines for your calligraphy.
+    </p>
+    <h2>Pre-made Guides</h2>
     <ul>
       {% for p in site.pages %}
         {% if p.title %}
@@ -16,10 +20,21 @@
         {% endif %}
       {% endfor %}
     </ul>
-    <p>
-      Print settings: Letter, landscape, no margins
-    </p>
+    <h2>Print Settings</h2>
+    <dl>
+      <dt>Paper size</dt>
+      <dd>Letter</dd>
+      <dt>Paper orientation</dt>
+      <dd>Landscape</dd>
+      <dt>Margins</dt>
+      <dd>0</dd>
+    </dl>
 
-    <a href="https://github.com/crccheck/calligraphy-guides">Source</a>
+    <hr>
+    <p>
+      <small>
+        <a href="https://github.com/crccheck/calligraphy-guides">Source</a>
+      </small>
+    </p>
   </body>
 </html>
