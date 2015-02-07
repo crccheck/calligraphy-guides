@@ -11,15 +11,36 @@
       Print these out to use as guidelines for your calligraphy.
     </p>
     <h2>Pre-made Guides</h2>
-    <ul>
-      {% for p in site.pages %}
-        {% if p.title %}
-          <li>
-            <a href="{{ site.baseurl }}{{ p.url }}">{{ p.title }}</a>
-          </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>x-height</th>
+          <th>cap height</th>
+          <th>lines per page</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in site.pages %}
+          {% if p.title %}
+            <tr>
+              <td>
+                <a href="{{ site.baseurl }}{{ p.url }}">{{ p.title }}</a>
+              </td>
+              <td>
+                {{ p.x-height }}
+              </td>
+              <td>
+                {{ p.cap-height }}
+              </td>
+              <td>
+                {{ p.lines }}
+              </td>
+            </tr>
+          {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
     <h2>Print Settings</h2>
     <dl>
       <dt>Paper size</dt>
