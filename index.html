@@ -1,4 +1,5 @@
 ---
+lines: 9
 ---
 <!DOCTYPE html>
 <html>
@@ -11,7 +12,6 @@
 <body>
   <header class="ui no-print">
     <form id="form" action="">
-      {{ page.title }}
       <label for="nib">nib</label>
       <select name="nib" id="nib">
         <option>1.5</option>
@@ -37,14 +37,14 @@
       <input type="number" value=2 id="spacing">
 
       <label for="lines">lines</label>
-      <input type="number" value=10 id="lines">
+      <input type="number" value="{{ page.lines }}" id="lines">
+
+      <label for="gutter">gutter</label>
+      <input type="number" value=35 id="gutter">
     </form>
   </header>
-  <nav class="ui no-print">
-    <a href="{{ site.baseurl }}/">home</a>
-  </nav>
   <div id="paper">
-    {% for _ in (1..10) %}
+    {% for _ in (1..page.lines) %}
       <p></p>
     {% endfor %}
   </div>
@@ -52,6 +52,7 @@
   <script>
     var $form = $('#form');
     var $paper = $('#paper');
+    var $body = $(document.body);
 
     function update() {
       $paper.prop('class',
@@ -70,6 +71,9 @@
           marginBottom: 'calc(' + spacing + 'em - 1px)'
         }).appendTo($paper);
       }
+
+      var gutter = parseInt(document.getElementById('gutter').value, 10);
+      $body.css('padding', gutter + 'px ' + gutter + 'px 0');
     }
 
     $form.on('submit', function (e) { e.preventDefault(); });
