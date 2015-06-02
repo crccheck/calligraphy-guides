@@ -35,6 +35,9 @@
 
       <label for="spacing">spacing height</label>
       <input type="number" value=2 id="spacing">
+
+      <label for="lines">lines</label>
+      <input type="number" value=10 id="lines">
     </form>
   </header>
   <nav class="ui no-print">
@@ -49,6 +52,7 @@
   <script>
     var $form = $('#form');
     var $paper = $('#paper');
+
     function update() {
       $paper.prop('class',
         $form.serialize()
@@ -56,13 +60,18 @@
         .replace(/\./g, '_')
         .replace(/&/g, ' '));
 
-      // var xHeight = parseFloat(document.getElementById('x-height').value);
-      // var capHeight = parseFloat(document.getElementById('cap').value);
+      var count = parseInt(document.getElementById('lines').value, 10);
       var spacing = parseFloat(document.getElementById('spacing').value);
-      $('p').css({
-        marginBottom: 'calc(' + spacing + 'em - 1px)'
-      })
+
+      // Throw everything away!
+      $paper.empty();
+      for (var i = 0; i < count; i++) {
+        $('<p/>').css({
+          marginBottom: 'calc(' + spacing + 'em - 1px)'
+        }).appendTo($paper);
+      }
     }
+
     $form.on('submit', function (e) { e.preventDefault(); });
     $('select, input').on('change', update);
     update();
