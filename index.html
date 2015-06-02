@@ -12,35 +12,46 @@ lines: 9
 <body>
   <header class="ui no-print">
     <form id="form" action="">
-      <label for="nib">nib</label>
-      <select name="nib" id="nib">
-        <option>1.5</option>
-        <option selected="selected">2.4</option>
-        <option>3.8</option>
-        <option>6.0</option>
-      </select>,
-      <label for="x-height">x-height</label>
-      <select name="x" id="x-height">
-        <option>3</option>
-        <option>4</option>
-        <option selected="selected">5</option>
-        <option>6</option>
-      </select>
+      <label for="nib" title="The size of the nib, in millimeters">
+        nib
+        <select name="nib" id="nib">
+          <option>1.5</option>
+          <option selected="selected">2.4</option>
+          <option>2.5</option>
+          <option>3.8</option>
+          <option>6.0</option>
+        </select>
+      </label>
+      <label for="x-height" title="In nib widths">
+        x-height
+        <select name="x" id="x-height">
+          <option>3</option>
+          <option>4</option>
+          <option selected="selected">5</option>
+          <option>6</option>
+        </select>
+      </label>
 
-      <label for="cap">cap height</label>
-      <select name="cap" id="cap">
-        <option>6</option>
-        <option selected="selected">7</option>
-      </select>
+      <label for="cap" title="In nib widths">
+        cap height
+        <select name="cap" id="cap">
+          <option>6</option>
+          <option selected="selected">7</option>
+        </select>
+      </label>
 
-      <label for="spacing">spacing height</label>
-      <input type="number" value=2 id="spacing">
+      <label for="spacing" title="In nib widths">
+        spacing height
+        <input type="number" value=2 id="spacing">
+      </label>
 
       <label for="lines">lines</label>
       <input type="number" value="{{ page.lines }}" id="lines">
 
-      <label for="gutter">gutter</label>
-      <input type="number" value=35 id="gutter">
+      <label for="gutter" title="In pixels">
+        gutter
+        <input type="number" value=35 id="gutter">
+      </label>
     </form>
   </header>
   <div id="paper">
