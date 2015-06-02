@@ -1,0 +1,93 @@
+---
+---
+$page-gutter: 35px !default
+$line-spacing: 2
+$nib-unit: 5.2px
+
+.nib-1_5
+  font-size: 1.5 * $nib-unit / 1.5
+
+.nib-2_4
+  font-size: 2.4 * $nib-unit / 1.5
+
+.nib-3_8
+  font-size: 3.8 * $nib-unit / 1.5
+
+.nib-6_0
+  font-size: 6.0 * $nib-unit / 1.5
+
+.cap-6
+  p
+    height: 6em
+
+.cap-7
+  p
+    height: 7em
+
+.x-3
+  p:before
+    bottom: 3em
+
+.x-4
+  p:before
+    bottom: 4em
+
+.x-5
+  p:before
+    bottom: 5em
+
+.x-6
+  p:before
+    bottom: 6em
+
+body
+  padding: $page-gutter $page-gutter 0
+
+p
+  border-top: 1px solid black
+  border-bottom: 1px solid black
+  height: 1em
+  margin: 0
+  position: relative
+  &:first-of-type
+    margin-top: 0
+
+// x-height line
+p:before
+  border-top: 1px dashed black
+  content: " "
+  display: block
+  position: absolute
+  width: 100%
+
+p:after
+  content: " "
+  display: block
+  height: 1em
+
+
+// site structure
+/////////////////
+
+input[type=number]
+  width: 3em
+
+.ui
+  background: rgba(200, 200, 200, 0.7)
+  border-radius: 0.5rem
+  font-size: 1rem
+  font-family: sans-serif
+  padding: 0.7rem
+  position: absolute
+  top: $page-gutter
+  z-index: 1
+
+header.ui
+  left: $page-gutter
+
+nav.ui
+  right: $page-gutter
+
+@media only print
+  .no-print
+    display: none

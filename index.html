@@ -2,64 +2,71 @@
 ---
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Calligraphy Guidelines</title>
-  </head>
-  <body>
-    <p>
-      Print these out to use as guidelines for your calligraphy.
-    </p>
-    <h2>Pre-made Guides</h2>
-    <table>
-      <thead>
-        <tr>
-          <th></th>
-          <th>nib</th>
-          <th>x-height</th>
-          <th>cap height</th>
-          <th>lines per page</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for p in site.pages %}
-          {% if p.title %}
-            <tr>
-              <td>
-                <a href="{{ site.baseurl }}{{ p.url }}">{{ p.title }}</a>
-              </td>
-              <td>
-                {{ p.nib }}
-              </td>
-              <td>
-                {{ p.x-height }}
-              </td>
-              <td>
-                {{ p.cap-height }}
-              </td>
-              <td>
-                {{ p.lines }}
-              </td>
-            </tr>
-          {% endif %}
-        {% endfor %}
-      </tbody>
-    </table>
-    <h2>Print Settings</h2>
-    <dl>
-      <dt>Paper size</dt>
-      <dd>Letter</dd>
-      <dt>Paper orientation</dt>
-      <dd>Landscape</dd>
-      <dt>Margins</dt>
-      <dd>0</dd>
-    </dl>
+<head>
+  <meta charset="utf-8">
+  <title>Calligraphy Guidelines</title>
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+<body>
+  <header class="ui no-print">
+    <form id="form" action="">
+      {{ page.title }}
+      <label for="nib">nib</label>
+      <select name="nib" id="nib">
+        <option>1.5</option>
+        <option selected="selected">2.4</option>
+        <option>3.8</option>
+        <option>6.0</option>
+      </select>,
+      <label for="x-height">x-height</label>
+      <select name="x" id="x-height">
+        <option>3</option>
+        <option>4</option>
+        <option selected="selected">5</option>
+        <option>6</option>
+      </select>
 
-    <hr>
-    <p>
-      <small>
-        <a href="https://github.com/crccheck/calligraphy-guides">Source</a>
-      </small>
-    </p>
-  </body>
+      <label for="cap">cap height</label>
+      <select name="cap" id="cap">
+        <option>6</option>
+        <option selected="selected">7</option>
+      </select>
+
+      <label for="spacing">spacing height</label>
+      <input type="number" value=2 id="spacing">
+    </form>
+  </header>
+  <nav class="ui no-print">
+    <a href="{{ site.baseurl }}/">home</a>
+  </nav>
+  <div id="paper">
+    {% for _ in (1..10) %}
+      <p></p>
+    {% endfor %}
+  </div>
+
+  <script>
+    var $form = $('#form');
+    var $paper = $('#paper');
+    function update() {
+      $paper.prop('class',
+        $form.serialize()
+        .replace(/=/g, '-')
+        .replace(/\./g, '_')
+        .replace(/&/g, ' '));
+
+      // var xHeight = parseFloat(document.getElementById('x-height').value);
+      // var capHeight = parseFloat(document.getElementById('cap').value);
+      var spacing = parseFloat(document.getElementById('spacing').value);
+      $('p').css({
+        marginBottom: 'calc(' + spacing + 'em - 1px)'
+      })
+    }
+    $form.on('submit', function (e) { e.preventDefault(); });
+    $('select, input').on('change', update);
+    update();
+  </script>
+
+</body>
 </html>
