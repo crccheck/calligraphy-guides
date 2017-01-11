@@ -91,6 +91,7 @@ lines: 9
     }
 
     document.location.hash.substr(1).split('&')
+      .filter((x) => x)
       .map((x) => x.split('='))
       .forEach((x) =>
         $form.find(`[name=${x[0]}]`).val(x[1])
