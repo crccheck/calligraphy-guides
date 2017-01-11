@@ -11,7 +11,7 @@ lines: 9
 </head>
 <body>
   <header class="ui no-print">
-    <form id="form" action="">
+    <form id="form" method="GET">
       <label for="nib" title="The size of the nib, in millimeters">
         nib
         <select name="nib" id="nib">
@@ -42,15 +42,15 @@ lines: 9
 
       <label for="spacing" title="In nib widths">
         spacing height
-        <input type="number" value=2 id="spacing">
+        <input type="number" name="spacing" value=2 id="spacing">
       </label>
 
       <label for="lines">lines</label>
-      <input type="number" value="{{ page.lines }}" id="lines">
+      <input type="number" name="lines" value="{{ page.lines }}" id="lines">
 
       <label for="gutter" title="In pixels">
         gutter
-        <input type="number" value=35 id="gutter">
+        <input type="number" name="gutter" value=35 id="gutter">
       </label>
     </form>
   </header>
@@ -87,7 +87,6 @@ lines: 9
       $body.css('padding', gutter + 'px ' + gutter + 'px 0');
     }
 
-    $form.on('submit', function (e) { e.preventDefault(); });
     $('select, input').on('change', update);
     update();
   </script>
