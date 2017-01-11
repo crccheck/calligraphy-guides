@@ -66,8 +66,11 @@ lines: 9
     var $body = $(document.body);
 
     function update() {
+      const formDataString = $form.serialize()
+      // Don't use the history api because each change isn't a state we want to store
+      document.location.hash = formDataString
       $paper.prop('class',
-        $form.serialize()
+        formDataString
         .replace(/=/g, '-')
         .replace(/\./g, '_')
         .replace(/&/g, ' '));
@@ -79,13 +82,19 @@ lines: 9
       $paper.empty();
       for (var i = 0; i < count; i++) {
         $('<p/>').css({
-          marginBottom: 'calc(' + spacing + 'em - 1px)'
+          marginBottom: `calc(${spacing}em - 1px)`
         }).appendTo($paper);
       }
 
       var gutter = parseInt(document.getElementById('gutter').value, 10);
       $body.css('padding', gutter + 'px ' + gutter + 'px 0');
     }
+
+    document.location.hash.substr(1).split('&')
+      .map((x) => x.split('='))
+      .forEach((x) =>
+        $form.find(`[name=${x[0]}]`).val(x[1])
+      )
 
     $('select, input').on('change', update);
     update();
