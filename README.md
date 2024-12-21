@@ -3,7 +3,7 @@ Calligraphy Guides
 
 Installing Jekyll:
 
-    bundle install
+    make install
 
 
 Starting local Jekyll:
