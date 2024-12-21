@@ -53,6 +53,11 @@ lines: 9
         gutter
         <input type="number" name="gutter" value=35 id="gutter">
       </label>
+
+      <label for="angle" title="In degrees, 0 disables lines">
+        angle
+        <input type="number" name="angle" value=0 id="angle">
+      </label>
     </form>
   </header>
   <div id="paper">
@@ -64,7 +69,6 @@ lines: 9
   <script>
     var $form = $('#form');
     var $paper = $('#paper');
-    var $body = $(document.body);
 
     function update() {
       const formDataString = $form.serialize()
@@ -87,8 +91,15 @@ lines: 9
         }).appendTo($paper);
       }
 
-      var gutter = parseInt(document.getElementById('gutter').value, 10);
-      $body.css('padding', `${gutter}px ${gutter}px 0`);
+      const gutter = parseInt(document.getElementById('gutter').value, 10);
+      document.body.style.padding = `${gutter}px ${gutter}px 0`;
+
+      const angle = parseInt(document.getElementById('angle').value, 10);
+      if (angle) {
+        document.body.style.background = `repeating-linear-gradient(
+          -${angle}deg, #ddd, #ddd 1px,
+          transparent 1px, transparent 80px )`
+      }
     }
 
     document.location.hash.substr(1).split('&')
